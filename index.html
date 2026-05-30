@@ -373,7 +373,7 @@
                             </div>
                         </div>
                     </div>
-                    <form class="contact-form-card scroll-reveal" onsubmit="handleFormSubmit(event)">
+                        <form id="contactForm" class="contact-form-card scroll-reveal" onsubmit="handleFormSubmit(event)">                        
                         <div class="form-group">
                             <label for="name">ФИО</label>
                             <input type="text" id="name" name="name" placeholder="Иванов Иван Иванович" required>
@@ -426,11 +426,11 @@
                 <div class="footer-col">
                     <p class="footer-heading">КОНТАКТЫ</p>
                     <p class="footer-text">Тел: +7 (812) 717-70-75</p>
-                    <p class="footer-text">Email: rosniigt@fmbaros.ru</p>
+                    <p class="footer-text">Email: bloodscience@mail.ru</p>
                 </div>
                 <div class="footer-col">
                     <p class="footer-heading">ОФИЦИАЛЬНЫЙ САЙТ</p>
-                    <p class="footer-text">rosniigt.ru</p>
+                    <a href="https://bloodscience.ru" target="_blank" class="footer-link">bloodscience.ru</a>
                 </div>
             </div>
             <div class="footer-brand">
@@ -807,6 +807,9 @@
 
     <!-- Toast уведомления -->
     <div id="toast-container"></div>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <script src="script.js"></script>
 </body>

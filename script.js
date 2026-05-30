@@ -348,40 +348,75 @@ function animateCounter(el) {
 }
 
 // =============================================
-// FORM HANDLING
+// EMAILJS CONFIGURATION
+// =============================================
+const EMAILJS_PUBLIC_KEY = 'ZSL8kpHq6NgVxCcRO';
+const EMAILJS_SERVICE_ID = 'service_vck1959';
+const EMAILJS_TEMPLATE_ID = 'template_vrlck4l';
+
+// =============================================
+// FORM HANDLING (EmailJS)
 // =============================================
 function handleFormSubmit(event) {
     event.preventDefault();
 
     const form = event.target;
-    const formData = new FormData(form);
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
 
-    // Check if Formspree is configured
-    const action = form.getAttribute('action');
-    if (action && action.includes('YOUR_FORM_ID')) {
-        showToast('Для отправки форм настройте Formspree: зарегистрируйтесь на formspree.io и замените YOUR_FORM_ID в коде', 'error');
-        return;
+    // Показываем состояние загрузки
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+            <span>Отправка...</span>
+            <span class="btn-contact-arrow">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="12" cy="12" r="10" stroke-opacity="0.3"/>
+                    <path d="M12 6v6l4 2" stroke-opacity="0.8"/>
+                </svg>
+            </span>
+        `;
     }
 
-    // Send via Formspree
-    fetch(action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-    })
-    .then(response => {
-        if (response.ok) {
-            showToast('Запрос успешно отправлен! Мы свяжемся с вами в ближайшее время.', 'success');
+    // Инициализируем EmailJS
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
+
+    // Отправляем форму
+    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
+        .then(() => {
+            showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
             form.reset();
-        } else {
-            showToast('Ошибка отправки. Пожалуйста, попробуйте позже.', 'error');
-        }
-    })
-    .catch(() => {
-        showToast('Ошибка сети. Проверьте подключение к интернету.', 'error');
-    });
+        })
+        .catch((error) => {
+            console.error('EmailJS error:', error);
+            showToast('Ошибка отправки. Попробуйте позже или напишите на bloodscience@mail.ru', 'error');
+        })
+        .finally(() => {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        });
 }
 
+// Инициализация EmailJS при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+        console.log('%c[СПАД] EmailJS инициализирован', 'color:#0ea5e9');
+    }
+
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            if (!e.defaultPrevented) {
+                handleFormSubmit(e);
+            }
+        });
+    }
+});
 // Attach handler to contact form
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');

@@ -1729,3 +1729,14 @@ button.btn-contact-submit[type="submit"]:active {
         font-size: 13px;
     }
 }
+
+.footer-link {
+    color: #5a6a7a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: #0ea5e9;
+    text-decoration: underline;
+}
