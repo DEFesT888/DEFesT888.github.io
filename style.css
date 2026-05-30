@@ -13,10 +13,10 @@
     --text-secondary: #475569;
     --text-light: #94a3b8;
     --text-white: #ffffff;
-    --accent: #0ea5e9;
-    --accent-light: #38bdf8;
-    --accent-dark: #0284c7;
-    --accent-teal: #14b8a6;
+    --accent: #dc2626;
+    --accent-light: #ef4444;
+    --accent-dark: #b91c1c;
+    --accent-teal: #991b1b;
     --border: #e2e8f0;
     --border-dark: #1e293b;
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -228,12 +228,12 @@ button {
 
 .nav-link.active {
     color: var(--accent-light);
-    background: rgba(14, 165, 233, 0.15);
+    background: rgba(220, 38, 38, 0.15);
 }
 
 #header.scrolled .nav-link.active {
     color: var(--accent-dark);
-    background: rgba(14, 165, 233, 0.1);
+    background: rgba(220, 38, 38, 0.1);
 }
 
 /* Mobile menu button */
@@ -375,8 +375,8 @@ button {
     color: var(--accent-light);
     margin-bottom: 24px;
     padding: 8px 16px;
-    background: rgba(14, 165, 233, 0.15);
-    border: 1px solid rgba(14, 165, 233, 0.3);
+    background: rgba(220, 38, 38, 0.15);
+    border: 1px solid rgba(220, 38, 38, 0.3);
     border-radius: 100px;
 }
 
@@ -423,12 +423,12 @@ button {
 .btn-primary {
     background: linear-gradient(135deg, var(--accent), var(--accent-teal));
     color: var(--text-white);
-    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.35);
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.35);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(14, 165, 233, 0.45);
+    box-shadow: 0 8px 30px rgba(220, 38, 38, 0.45);
 }
 
 .btn-secondary {
@@ -675,7 +675,7 @@ button {
 }
 
 .slide-card:hover {
-    border-color: rgba(14, 165, 233, 0.3);
+    border-color: rgba(220, 38, 38, 0.3);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
@@ -769,7 +769,7 @@ button {
 
 .carousel-prev:hover,
 .carousel-next:hover {
-    background: rgba(14, 165, 233, 0.15);
+    background: rgba(220, 38, 38, 0.15);
     border-color: var(--accent);
     color: var(--accent-light);
 }
@@ -792,7 +792,7 @@ button {
 }
 
 .carousel-dot:hover {
-    background: rgba(14, 165, 233, 0.6);
+    background: rgba(220, 38, 38, 0.6);
     transform: scale(1.2);
 }
 
@@ -1083,8 +1083,8 @@ button {
 .contact-form-card .form-group input:focus,
 .contact-form-card .form-group textarea:focus {
     background: #ffffff;
-    border-color: #0ea5e9;
-    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+    border-color: #dc2626;
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
 }
 
 .contact-form-card .form-group textarea {
@@ -1116,12 +1116,12 @@ button.btn-contact-submit[type="submit"] {
     font-weight: 600;
     letter-spacing: 0.08em;
     color: #ffffff !important;
-    background: linear-gradient(135deg, #0c4a6e 0%, #0ea5e9 50%, #14b8a6 100%) !important;
+    background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 50%, #991b1b 100%) !important;
     background-size: 200% 200% !important;
     border: none !important;
     border-radius: 12px;
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.25);
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.25);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -1131,7 +1131,7 @@ button.btn-contact-submit[type="submit"]::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #14b8a6 0%, #0ea5e9 50%, #0c4a6e 100%);
+    background: linear-gradient(135deg, #991b1b 0%, #dc2626 50%, #7f1d1d 100%);
     background-size: 200% 200%;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -1139,7 +1139,7 @@ button.btn-contact-submit[type="submit"]::before {
 
 button.btn-contact-submit[type="submit"]:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(14, 165, 233, 0.4);
+    box-shadow: 0 12px 40px rgba(220, 38, 38, 0.4);
     background-position: 100% 100% !important;
 }
 
@@ -1166,7 +1166,7 @@ button.btn-contact-submit[type="submit"]:hover .btn-contact-arrow {
 
 button.btn-contact-submit[type="submit"]:active {
     transform: translateY(-1px);
-    box-shadow: 0 6px 24px rgba(14, 165, 233, 0.3);
+    box-shadow: 0 6px 24px rgba(220, 38, 38, 0.3);
 }
 
 /* Contact responsive */
@@ -1441,7 +1441,7 @@ button.btn-contact-submit[type="submit"]:active {
     font-size: 13px;
     font-weight: 500;
     color: var(--accent-dark);
-    background: rgba(14, 165, 233, 0.1);
+    background: rgba(220, 38, 38, 0.1);
     padding: 6px 14px;
     border-radius: 100px;
 }
@@ -1737,6 +1737,6 @@ button.btn-contact-submit[type="submit"]:active {
 }
 
 .footer-link:hover {
-    color: #0ea5e9;
+    color: #dc2626;
     text-decoration: underline;
 }
