@@ -355,7 +355,7 @@ const EMAILJS_SERVICE_ID = 'service_vck1959';
 const EMAILJS_TEMPLATE_ID = 'template_vrlck4l';
 
 // =============================================
-// FORM HANDLING (EmailJS)
+// FORM HANDLING (EmailJS) 
 // =============================================
 function handleFormSubmit(event) {
     event.preventDefault();
@@ -364,26 +364,15 @@ function handleFormSubmit(event) {
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
 
-    // Показываем состояние загрузки
     if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = `
-            <span>Отправка...</span>
-            <span class="btn-contact-arrow">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <circle cx="12" cy="12" r="10" stroke-opacity="0.3"/>
-                    <path d="M12 6v6l4 2" stroke-opacity="0.8"/>
-                </svg>
-            </span>
-        `;
+        submitBtn.innerHTML = `<span>Отправка...</span>`;
     }
 
-    // Инициализируем EmailJS
     if (typeof emailjs !== 'undefined') {
         emailjs.init(EMAILJS_PUBLIC_KEY);
     }
 
-    // Отправляем форму
     emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
         .then(() => {
             showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
@@ -391,7 +380,7 @@ function handleFormSubmit(event) {
         })
         .catch((error) => {
             console.error('EmailJS error:', error);
-            showToast('Ошибка отправки. Попробуйте позже или напишите на bloodscience@mail.ru', 'error');
+            showToast('Ошибка отправки. Попробуйте позже.', 'error');
         })
         .finally(() => {
             if (submitBtn) {
@@ -401,24 +390,12 @@ function handleFormSubmit(event) {
         });
 }
 
-// Инициализация EmailJS при загрузке страницы
+// Инициализация
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof emailjs !== 'undefined') {
         emailjs.init(EMAILJS_PUBLIC_KEY);
-        console.log('%c[СПАД] EmailJS инициализирован', 'color:#0ea5e9');
     }
 
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            if (!e.defaultPrevented) {
-                handleFormSubmit(e);
-            }
-        });
-    }
-});
-// Attach handler to contact form
-document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', handleFormSubmit);
